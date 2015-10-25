@@ -1,18 +1,19 @@
 #!bin/bash
 
 sudo apt-get update -y
-sudo apt-get install -y apache2 git php5 php5-curl curl mysql-client
+sudo apt-get install -y apache2 git php5 php5-curl curl mysql-client php-mysqli
 
-curl -sS https://getcomposer.org/installer | php
-php composer.phar require aws/aws-sdk-php
+curl -sS https://getcomposer.org/installer | sudo php &> /tmp/getcomposer.txt
+sudo php composer.phar require aws/aws-sdk-php &> /tmp/runcomposer.txt
 
-sudo mv vendor /var/www/html
+git clone https://github.com/SandhyaGupta/itmo544-fall2015-applicationRep.git
 
-#git clone https://github.com/SandhyaGupta/itmo544-fall2015-applicationRep.git
+mv ./itmo544-fall2015-applicationRep/images /var/www/html/images
+mv ./itmo544-fall2015-applicationRep/index.html /var/www/html
+mv ./itmo544-fall2015-applicationRep/images/*.php /var/www/html
+sudo mv vendor /var/www/html &> /tmp/movevendor.txt
 
-#mkdir /var/www/html/images
-#cp -r ./itmo544-fall2015-applicationRep/images/* /var/www/html/images
-#cp ./itmo544-fall2015-applicationRep/index.html /var/www/html
-#cp ./itmo544-fall2015-applicationRep/page2.html /var/www/html
+sudo php /var/www/html/setup.php &> /tmp/database-setup.txt
+sudo chmod 600 /var/www/html/setup.php
 
 echo "Hello!" > /tmp/hello.txt
