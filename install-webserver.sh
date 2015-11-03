@@ -9,11 +9,13 @@ sudo php composer.phar require aws/aws-sdk-php &> /tmp/runcomposer.txt
 git clone https://github.com/SandhyaGupta/itmo544-fall2015-applicationRep.git
 
 mv ./itmo544-fall2015-applicationRep/images /var/www/html/images
+mv ./itmo544-fall2015-applicationRep/css /var/www/html/css
+mv ./itmo544-fall2015-applicationRep/js /var/www/html/js
 mv ./itmo544-fall2015-applicationRep/index.html /var/www/html
 mv ./itmo544-fall2015-applicationRep/*.php /var/www/html
 sudo mv vendor /var/www/html &> /tmp/movevendor.txt
 
-sudo php /var/www/html/setup.php &> /tmp/database-setup.txt
-sudo chmod 600 /var/www/html/setup.php
+#sudo php /var/www/html/setup.php &> /tmp/database-setup.txt
+#sudo chmod 600 /var/www/html/setup.php
 
 echo "Hello!" > /tmp/hello.txt
